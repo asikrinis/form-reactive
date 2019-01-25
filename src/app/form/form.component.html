@@ -1,0 +1,141 @@
+<h4>Formularios <small>Reactivos</small></h4>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+
+  <div formGroupName="nombrecompleto">
+
+    <div class="form-group row" [ngClass]="{ 'is-invalid':forma.controls['nombrecompleto'].controls['nombre'].valid }">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+        <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+        <div *ngIf="forma.get('nombrecompleto.nombre').errors?.required && forma.get('nombrecompleto.nombre').touched " class="form-control-feedback">
+          El nombre es necesario.
+        </div>
+        <div *ngIf="forma.get('nombrecompleto.nombre').errors?.minlength" class="form-control-feedback">
+          Por lo menos 3 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{ 'is-invalid':forma.controls['nombrecompleto'].controls['apellidop'].valid }">
+      <label class="col-2 col-form-label">Apellido Paterno</label>
+      <div class="col-8">
+        <input class="form-control" type="text" placeholder="Apellido Paterno" formControlName="apellidop">
+        <div *ngIf="forma.get('nombrecompleto.apellidop').errors?.required && forma.get('nombrecompleto.apellidop').touched" class="form-control-feedback">
+          El Apellido Paterno es necesario.
+        </div>
+        <div *ngIf="forma.get('nombrecompleto.apellidop').errors?.minlength" class="form-control-feedback">
+          Por lo menos 3 caracteres.
+        </div>
+      </div>
+    </div>
+    <div class="form-group row" [ngClass]="{ 'is-invalid':forma.controls['nombrecompleto'].controls['apellidom'].valid }">
+      <label class="col-2 col-form-label">Apellido Materno</label>
+      <div class="col-8">
+        <input class="form-control" type="text" placeholder="Apellido Materno" formControlName="apellidom">
+        <div *ngIf="forma.get('nombrecompleto.apellidom').errors?.required && forma.get('nombrecompleto.apellidom').touched" class="form-control-feedback">
+          El Apellido Materno es necesario.
+        </div>
+        <div *ngIf="forma.get('nombrecompleto.apellidom').errors?.minlength" class="form-control-feedback">
+          Por lo menos 3 caracteres.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">RFC</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" placeholder="RFC" formControlName="rfc">
+      <div *ngIf="forma.get('rfc').errors?.required && forma.get('rfc').touched" class="form-control-feedback">
+        El RFC es necesario.
+      </div>
+      <div *ngIf="forma.get('rfc').errors?.pattern" class="form-control-feedback">
+        Recuerda qué es de 13 dígitos ejemplo JUMM420313PA9.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Nombre de usuario</label>
+    <div class="col-md-8">
+      <input class="form-control" type="text" placeholder="Usuario" formControlName="username">
+      <div *ngIf="forma.get('username').errors?.required && forma.get('username').touched" class="form-control-feedback">
+        El Nombre de Usuario es necesario.
+      </div>
+      <div *ngIf="forma.get('username').errors?.pattern" class="form-control-feedback">
+        Recuerda que debe ser en minúsculas, sin espacios y que contenga mínimo un número.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Teléfono Celular</label>
+    <div class="col-md-8">
+      <input class="form-control" type="number" placeholder="Teléfono Celular" formControlName="celular">
+      <div *ngIf="forma.get('celular').errors?.required && forma.get('celular').touched " class="form-control-feedback">
+        El Número de celular es necesario.
+      </div>
+      <div *ngIf="forma.get('celular').errors?.minlength" class="form-control-feedback">
+        Debe ser de 10 dígitos.
+      </div>
+      <div *ngIf="forma.get('celular').errors?.maxlength" class="form-control-feedback">
+        El máximo es de 10 dígitos.
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+      <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo">
+      <div *ngIf="forma.get('correo').errors?.required && forma.get('correo').touched " class="form-control-feedback">
+        El Correo es necesario.
+      </div>
+      <div *ngIf="forma.get('correo').errors?.email" class="form-control-feedback">
+        Por ejemplo nombre@nombre.com
+      </div>
+    </div>
+  </div>
+
+  <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" formControlName="privacidad" (change)="onChange($event)" id="customSwitch1">
+    <label class="custom-control-label" for="customSwitch1">Acepta las políticas de Privacidad</label>
+    <div *ngIf="forma.get('privacidad').errors?.required && forma.get('privacidad').touched " class="form-control-feedback">
+      Debe aceptar el aviso de privacidad para registrar usuario.
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary" (click)="guardarCambios()" >
+        Guardar
+      </button>
+    </div>
+  </div>
+
+  {{ forma.valid }}
+  <br>
+  {{ forma.status }}
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Completo</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios; let i = index" >
+        <th scope="row"> {{ i + 1 }} </th>
+        <td> {{ usuario.nombrecompleto.nombre }} {{ usuario.nombrecompleto.apellidop }} {{ usuario.nombrecompleto.apellidom }} </td>
+        <td> {{ usuario.correo }} </td>
+        <td> {{ usuario.username }} </td>
+      </tr>
+    </tbody>
+  </table>
+
+</form>

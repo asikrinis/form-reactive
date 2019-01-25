@@ -1,0 +1,128 @@
+<!-- NavBar de App de Seguros-->
+<mat-toolbar color="accent">
+  <span>Formularios Reactivos con Material Angular</span>
+  <span class="demo-toolbar"></span>
+</mat-toolbar>
+
+<!-- Formulario en un card-->
+<mat-card>
+  <!-- Titulo -->
+  <mat-card-title>
+    Formulario Uno
+  </mat-card-title>
+
+  <!-- Actual content starts from here -->
+  <mat-card-content>
+    <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+      <table>
+        <tr formGroupName="nombrecompleto">
+          <td>
+            <mat-form-field class="demo-full-width">
+              <input formControlName="nombre" matInput placeholder="Nombre">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="forma.get('nombrecompleto.nombre').errors?.required && forma.get('nombrecompleto.nombre').touched ">*El
+                Nombre es necesario.</span>
+            </mat-error>
+            <mat-error>
+              <span *ngIf="forma.get('nombrecompleto.nombre').errors?.minlength">*Por lo menos 3 caracteres.</span>
+            </mat-error>
+          </td>
+          <td>
+            <mat-form-field class="demo-full-width">
+              <input formControlName="apellidop" matInput placeholder="Apellido Paterno">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="forma.get('nombrecompleto.apellidop').errors?.required && forma.get('nombrecompleto.apellidop').touched">*El
+                Apellido Paterno es necesario.</span>
+            </mat-error>
+            <mat-error>
+              <span *ngIf="forma.get('nombrecompleto.apellidop').errors?.minlength">*Por lo menos 3 caracteres.</span>
+            </mat-error>
+          </td>
+          <td>
+            <mat-form-field class="demo-full-width">
+              <input formControlName="apellidom" matInput placeholder="Apellido Materno">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="forma.get('nombrecompleto.apellidom').errors?.required && forma.get('nombrecompleto.apellidom').touched">*El
+                Apellido Materno es necesario.</span>
+            </mat-error>
+            <mat-error>
+              <span *ngIf="forma.get('nombrecompleto.apellidom').errors?.minlength">*Por lo menos 3 caracteres.</span>
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="demo-full-width">
+              <input formControlName="rfc" matInput placeholder="RFC" matTextareaAutosize matAutosizeMinRows="2"
+                matAutosizeMaxRows="5">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="forma.get('rfc').errors?.required && forma.get('rfc').touched">*El RFC es necesario.</span>
+            </mat-error>
+            <mat-error>
+              <span *ngIf="forma.get('rfc').errors?.pattern">*Recuerda que es de 13 dígitos ejemplo JUMM420313PA9.</span>
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="demo-full-width">
+              <input formControlName="username" matInput placeholder="Nombre de Usuario">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="forma.get('username').errors?.required && forma.get('username').touched">*El Nombre de
+                Usuario es necesario.</span>
+            </mat-error>
+            <mat-error>
+              <span *ngIf="forma.get('username').errors?.pattern">*Recuerda que debe ser en minÃºsculas, sin espacios y
+                que contenga mÃ­nimo un nÃºmero.</span>
+            </mat-error>
+          </td>
+          <td>
+            <mat-form-field class="demo-full-width">
+              <input formControlName="celular" matInput placeholder="TelefonoCelular">
+            </mat-form-field>
+            <mat-error>
+              <span *ngIf="forma.get('celular').errors?.required && forma.get('celular').touched ">*El Telefono de
+                Celular es necesario.</span>
+            </mat-error>
+            <mat-error>
+              <span *ngIf="forma.get('celular').errors?.minlength">*El Telefono de Celular debe ser de 10 dígitos.</span>
+            </mat-error>
+            <mat-error>
+              <span *ngIf="forma.get('celular').errors?.maxlength">*El Telefono de Celular no debe ser de más de 10
+                dígitos.</span>
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-form-field class="demo-full-width">
+              <input formControlName="correo" matInput placeholder="Correo">
+              <mat-hint>Por ejemplo: correo@correo.com </mat-hint>
+              <mat-error>
+                <span *ngIf="forma.get('correo').errors?.required && forma.get('correo').touched " >*El Correo es requerido.</span>
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <mat-slide-toggle formControlName="Privacidad" (change)="onChange($event)">Acepta la Privacidad</mat-slide-toggle>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="content-center">
+            <button mat-raised-button color="accent" [disabled]="!forma.valid || Privacidad == 0">Enviar</button>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+</mat-card>

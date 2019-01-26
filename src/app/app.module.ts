@@ -14,7 +14,8 @@ import {
   MatNativeDateModule,      
   MatRadioModule,      
   MatSelectModule,      
-  MatOptionModule,      
+  MatOptionModule,
+  MatTableModule,      
   MatSlideToggleModule,ErrorStateMatcher,ShowOnDirtyErrorStateMatcher } from '@angular/material'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';    
 
@@ -51,7 +52,8 @@ import { HomeComponent } from './home/home.component';
     MatRadioModule,      
     MatSelectModule,      
     MatOptionModule,      
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule
   ],
   exports: [
     MatButtonModule,      
@@ -67,7 +69,8 @@ import { HomeComponent } from './home/home.component';
     MatRadioModule,      
     MatSelectModule,      
     MatOptionModule,      
-    MatSlideToggleModule  
+    MatSlideToggleModule,
+    MatTableModule  
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}    

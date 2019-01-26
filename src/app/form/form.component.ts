@@ -102,6 +102,13 @@ export class FormComponent {
       this.usuario.privacidad = 0;  
     }  
   }  
+
+  //deleteUsuario(usarios): void {
+  //  this.deleteUsuario(usuario.id)
+  //    .subscribe( data => {
+  //      this.usuarios = this.usuarios.filter(u => u !== usuario);
+  //    })
+  //};
   
   
 

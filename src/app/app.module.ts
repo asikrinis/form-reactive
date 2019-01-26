@@ -22,12 +22,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { MaterialangularReactiveformComponent } from './materialangular-reactiveform/materialangular-reactiveform.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    MaterialangularReactiveformComponent
+    MaterialangularReactiveformComponent,
+    NavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

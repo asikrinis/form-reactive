@@ -109,7 +109,7 @@
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary" (click)="guardarCambios()" >
+      <button type="submit" class="btn btn-outline-primary"  >
         Guardar
       </button>
     </div>
@@ -135,7 +135,7 @@
         <td> {{ usuario.nombrecompleto.nombre }} {{ usuario.nombrecompleto.apellidop }} {{ usuario.nombrecompleto.apellidom }} </td>
         <td> {{ usuario.correo }} </td>
         <td> {{ usuario.username }} </td>
-        <td><button class="btn btn-success" (click)="deleteUsuario(usuarios)"> Borrar</button></td>
+        <td><button class="btn btn-success" (click)="deleteUsuario(i)" type="button"> Borrar</button></td>
       </tr>
     </tbody>
   </table>

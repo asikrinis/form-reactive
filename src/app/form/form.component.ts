@@ -110,7 +110,10 @@ export class FormComponent {
   //    })
   //};
   
-  
+  deleteUsuario(index: number){
+    console.log(index);
+    this.usuarios.splice(index, 1);
+  }
 
   guardarCambios() {
     

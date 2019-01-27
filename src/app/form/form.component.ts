@@ -10,9 +10,15 @@ import { Observable } from 'rxjs'
 export class FormComponent {
 
   forma: FormGroup;
-  area= ['it', 'rh']
 
   usuarios = [];
+  opc = [
+    {titulo:'Sección RH', area:'rh'},
+    {titulo:'Sección Sistemas', area:'ti'},
+    {titulo:'Sección Almace', area:'almacen'},
+  ];
+  
+  nombreArea:string ='';
 
   usuario: any = {
 
@@ -102,26 +108,19 @@ export class FormComponent {
       this.usuario.privacidad = 0;  
     }  
   }  
-
-  //deleteUsuario(usarios): void {
-  //  this.deleteUsuario(usuario.id)
-  //    .subscribe( data => {
-  //      this.usuarios = this.usuarios.filter(u => u !== usuario);
-  //    })
-  //};
   
   deleteUsuario(index: number){
     console.log(index);
     this.usuarios.splice(index, 1);
   }
 
-  guardarCambios() {
-    
-    this.usuarios.push(this.forma.value);
+  guardarCambios() { 
+    if(this.forma.valid){
+      this.usuarios.push(this.forma.value);
+      this.forma.reset();
+    }
+    console.log(this.forma.valid);
    
-
-
-    
     // this.forma.reset(
     // {
     //   nombrecompleto:{
@@ -135,6 +134,11 @@ export class FormComponent {
     //     correo:"",
     //     privacidad: 0
     //  });
+  }
+
+  seleccionOpcion(obj: any){
+    this.nombreArea = obj.target.value; 
+    console.log(obj.target.value);
   }
 
 }

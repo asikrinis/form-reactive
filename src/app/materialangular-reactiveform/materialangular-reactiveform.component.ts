@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 export class MaterialangularReactiveformComponent  {
 
   forma: FormGroup;
-  area= ['it', 'rh']
 
   usuarios = [];
 
@@ -60,6 +59,7 @@ export class MaterialangularReactiveformComponent  {
         Validators.email
       ]),
       'privacidad': new FormControl('', [
+        Validators.required
       ]),
       'username': new FormControl('', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[0-9])[a-z0-9]+$")]),
     });
@@ -101,16 +101,13 @@ export class MaterialangularReactiveformComponent  {
       this.usuario.privacidad = 0;  
     }  
   }  
-  
-  
 
   guardarCambios() {
-    
-    this.usuarios.push(this.forma.value);
-   
-
-
-    
+    if(this.forma.valid){
+      this.usuarios.push(this.forma.value);
+      this.forma.reset();
+    }
+    console.log(this.forma.valid); 
     // this.forma.reset(
     // {
     //   nombrecompleto:{

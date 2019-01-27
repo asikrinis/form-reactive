@@ -77,8 +77,8 @@
                 Usuario es necesario.</span>
             </mat-error>
             <mat-error>
-              <span *ngIf="forma.get('username').errors?.pattern">*Recuerda que debe ser en minÃºsculas, sin espacios y
-                que contenga mÃ­nimo un nÃºmero.</span>
+              <span *ngIf="forma.get('username').errors?.pattern">*Recuerda que debe ser en minúsculas, sin espacios y
+                que contenga mÃ­nimo un número.</span>
             </mat-error>
           </td>
           <td>
@@ -111,12 +111,12 @@
         </tr>
         <tr>
           <td colspan="2">
-            <mat-slide-toggle formControlName="Privacidad" (change)="onChange($event)">Acepta la Privacidad</mat-slide-toggle>
+            <mat-slide-toggle formControlName="privacidad" (change)="onChange($event)">Acepta la Privacidad</mat-slide-toggle>
           </td>
         </tr>
         <tr>
           <td colspan="2" class="content-center">
-            <button mat-raised-button color="accent" [disabled]="!forma.valid || Privacidad == 0">Enviar</button>
+            <button mat-raised-button color="accent" type="submit" [disabled]="!forma.valid || privacidad == 0">Enviar</button>
           </td>
         </tr>
         <tr>
